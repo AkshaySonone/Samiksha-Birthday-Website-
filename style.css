@@ -852,14 +852,12 @@ body {
     visibility: visible;
     transform: scale(1);
 }
-/* Default when active: show Card1, hide Card2 */
-.boxMail.active .boxMail-container .card1 { display: block; }
-.boxMail.active .boxMail-container .card2 { display: none; }
-
-/* When container is opened: swap cards */
-.boxMail.active .boxMail-container.opened .card1 { display: none; }
-.boxMail.active .boxMail-container.opened .card2 { display: block; }
-
+.boxMail.active.opened .boxMail-container .card1 {
+    display: none;
+}
+.boxMail.active.opened .boxMail-container .card2 {
+    display: block;
+}
 .boxMail .boxMail-container{
     position: absolute;
     width: 750px;
@@ -1114,14 +1112,13 @@ body {
     }
 
     #btn__letter {
-        width: auto;
+        width: 240px;
         padding: 12px 20px;
         font-size: 1.1rem;
         pointer-events: auto;
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
         margin: 0 auto;
-        white-space: nowrap;
     }
 
     #btn__letter:active {
@@ -1243,33 +1240,20 @@ body {
         flex-direction: column;
     }
 
-/* Keep Card1 centered */
-.boxMail .boxMail-container .card1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: auto;
-    padding: 20px 15px;
-    min-height: auto;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
+    .boxMail .boxMail-container .card1,
+    .boxMail .boxMail-container .card2 {
+        width: 100%;
+        height: auto;
+        position: relative;
+        transform: none !important;
+        left: auto !important;
+        top: auto !important;
+    }
 
-/* Card2 can be relative for stacked layout */
-.boxMail .boxMail-container .card2 {
-    position: relative;
-    width: 100%;
-    height: auto;
-    transform: none !important;
-    left: auto !important;
-    top: auto !important;
-}
+    .boxMail .boxMail-container .card1 {
+        padding: 20px 15px;
+        min-height: auto;
+    }
 
     .boxMail .boxMail-container .card2 {
         min-height: 300px;
@@ -1302,20 +1286,11 @@ body {
         margin-bottom: 10px;
     }
 
-    .boxMail .boxMail-container .card1 .username {
-        font-size: 20px;
-        text-align: center;
-        line-height: 1.3;
-        letter-spacing: 1px;
-        margin: 0;
-    }
-
     .boxMail .boxMail-container .card1 h3 {
         font-size: 24px;
-        text-align: center;
+        width: 100%;
         line-height: 1.3;
         letter-spacing: 2px;
-        margin: 0;
     }
 
     .boxMail .boxMail-container .card2 .card2-content .imageCute2 {
@@ -1336,23 +1311,7 @@ body {
         margin: 0;
     }
 
-    /* Keep Card1 centered when active */
-    .boxMail.active .boxMail-container .card1 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: auto;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-    }
-
-    /* Card2 stays relative */
+    .boxMail.active .boxMail-container .card1,
     .boxMail.active .boxMail-container .card2 {
         position: relative;
         width: 100%;
@@ -1362,7 +1321,10 @@ body {
         transform: none !important;
     }
 
-
+    .boxMail.active .boxMail-container .card1 {
+        transform: none !important;
+        cursor: pointer;
+    }
 
     .boxMail.active .boxMail-container .card2-content {
         transform: none !important;
@@ -1382,22 +1344,19 @@ body {
         padding: 20px;
     }
 
-    /* Default when active: show Card1, hide Card2 */
-    .boxMail.active .boxMail-container .card1 {
-        display: block;
-    }
+    /* Mobile two-click flow: hide card2 by default */
     .boxMail.active .boxMail-container .card2 {
         display: none;
     }
 
-    /* When container is opened: swap cards */
-    .boxMail.active .boxMail-container.opened .card1 {
+    /* Show card2 when opened */
+    .boxMail.active.opened .boxMail-container .card1 {
         display: none;
     }
-    .boxMail.active .boxMail-container.opened .card2 {
+
+    .boxMail.active.opened .boxMail-container .card2 {
         display: block;
     }
-
 }
 
 @media screen and (max-width: 768px) and (min-width: 481px) {
@@ -1414,7 +1373,6 @@ body {
     #btn__letter {
         width: 220px;
         padding: 5px 12px;
-        white-space: nowrap;
     }
 
     .content .right .image {
@@ -1439,11 +1397,6 @@ body {
 
     .boxMail .boxMail-container .card1 {
         padding: 20px 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
     }
 
     .boxMail .boxMail-container .card2 {
