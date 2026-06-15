@@ -145,174 +145,106 @@
                             always welcome 🤗 you can talk anytime you want to talk specially those which you can't say
                             to others. Your every suggestion helps and supports helps me a lot, thank you for making me a better person. And wish you very Happy birthday 🎈🎂🎈 Nanu . Don't be Sad ok be happy 😌
                         </h3>
-
                         <div class="imageCute2">
                             <img src="images/cute2.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="message-panel">
+                <div class="message-panel-inner">
+                    <h4>Special note for you</h4>
+                    <p class="message-text"></p>
+                </div>
+            </div>
         </div>
+
         <img id="mewmew" src="images/mewmew.gif" alt="MewMew" class="mewmew-corner">
     </div>
 
 </body>
 <script>
-    let datetxt = "17 June";
-    let datatxtletter = "My love. You are a very special girl. I always silently thank you for coming into my life. Today, I wish you all the best, lots of health, and lots of joy. I always hope we will celebrate many more birthdays like this together. Happy birthday to you.💕";
-    let titleLetter = "To you";
-    let charArrDate = datetxt.split('');
-    let charArrDateLetter = datatxtletter.split('');
-    let charArrTitle = titleLetter.split('');
-    let currentIndex = 0;
-    let currentIndexLetter = 0;
-    let currentIndexTitle = 0;
-    let date__of__birth = document.querySelector(".date__of__birth span");
-    let text__letter = document.querySelector(".text__letter p");
-    setTimeout(function () {
-        timeDatetxt = setInterval(function () {
-            if (currentIndex < charArrDate.length) {
-                date__of__birth.textContent += charArrDate[currentIndex];
-                currentIndex++;
-            }
-            else {
-                let i = document.createElement("i");
-                i.className = "fa-solid fa-star"
-                document.querySelector(".date__of__birth").prepend(i)
-                document.querySelector(".date__of__birth").appendChild(i.cloneNode(true))
-                clearInterval(timeDatetxt)
-            }
-        }, 100)
-    }, 12000)
+let datetxt = "17th June 2010";
+let datatxtletter = "My love. You are a very special girl. I always silently thank you for coming into my life. Today, I wish you all the best, lots of health, and lots of joy. I always hope we will celebrate many more birthdays like this together. Happy birthday to you.💕";
+let titleLetter = "To you";
 
-    var intervalContent;
-    var intervalTitle;
-    
-    // Button click handler - using both jQuery and vanilla JS for compatibility
-    function handleButtonClick(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $(".box__letter").slideDown()
-        setTimeout(function () {
-            $(".letter__border").slideDown();
-        }, 1000)
-        setTimeout(function () {
-            intervalTitle = setInterval(function () {
-                if (currentIndexTitle < charArrTitle.length) {
-                    document.querySelector(".title__letter").textContent += charArrTitle[currentIndexTitle];
-                    let i = document.createElement("i");
-                    i.className = "fa-solid fa-heart"
-                    document.querySelector(".title__letter").appendChild(i)
-                    currentIndexTitle++;
-                }
-                else {
-                    clearInterval(intervalTitle)
-                }
-            }, 100)
-        }, 2000)
-        setTimeout(function () {
-            document.querySelector("#heart__letter").classList.add("animationOp");
-            document.querySelector(".love__img").classList.add("animationOp");
-            document.querySelector("#mewmew").classList.add("animationOp");
-        }, 2800)
-        setTimeout(function () {
-            document.querySelectorAll(".heart").forEach((item) => {
-                item.classList.add("animation")
-            })
-        }, 3500)
-        setTimeout(function () {
-            intervalContent = setInterval(function () {
-                if (currentIndexLetter < charArrDateLetter.length) {
-                    text__letter.textContent += charArrDateLetter[currentIndexLetter];
-                    currentIndexLetter++;
-                }
-                else {
-                    clearInterval(intervalContent)
-                }
-            }, 50)
-        }, 6000)
-    }
-    
-    let boxmail = document.querySelector('.boxMail');
-    let btnElement = document.getElementById("btn__letter");
-    let card1 = document.querySelector('.boxMail .boxMail-container .card1');
-    let close = document.querySelector('.fa-xmark');
+let charArrDate = datetxt.split('');
+let charArrDateLetter = datatxtletter.split('');
+let charArrTitle = titleLetter.split('');
 
-    if (btnElement) {
-        btnElement.addEventListener("click", function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            boxmail.classList.add('active');
-            boxmail.classList.remove('opened');
-        }, false);
+let currentIndex = 0;
+let currentIndexLetter = 0;
+let currentIndexTitle = 0;
 
-        btnElement.addEventListener("touchend", function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            boxmail.classList.add('active');
-            boxmail.classList.remove('opened');
-        }, false);
-    }
+let date__of__birth = document.querySelector(".date__of__birth span");
+let messageText = document.querySelector(".message-text");
+let messagePanel = document.querySelector('.message-panel');
 
-    if (card1) {
-        card1.addEventListener('click', function(e) {
-            if (window.innerWidth <= 480) {
-                e.preventDefault();
-                e.stopPropagation();
-                boxmail.classList.add('opened');
-            }
-        }, false);
+setTimeout(function () {
+    let timeDatetxt = setInterval(function () {
+        if (currentIndex < charArrDate.length) {
+            date__of__birth.textContent += charArrDate[currentIndex];
+            currentIndex++;
+        } else {
+            let i = document.createElement("i");
+            i.className = "fa-solid fa-star";
+            document.querySelector(".date__of__birth").prepend(i);
+            document.querySelector(".date__of__birth").appendChild(i.cloneNode(true));
+            clearInterval(timeDatetxt);
+        }
+    }, 100);
+}, 12000);
 
-        card1.addEventListener('touchend', function(e) {
-            if (window.innerWidth <= 480) {
-                e.preventDefault();
-                e.stopPropagation();
-                boxmail.classList.add('opened');
-            }
-        }, false);
-    }
+// ✅ Define elements FIRST
+let boxmail = document.querySelector('.boxMail');
+let btnElement = document.getElementById("btn__letter");
+let closeBtn = document.querySelector('.fa-xmark');
 
-    $("#btn__letter").on("click", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        boxmail.classList.add('active');
-        boxmail.classList.remove('opened');
+// ✅ Button click → open boxMail
+function handleButtonClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Reset everything first
+    boxmail.classList.remove('tilt', 'opened', 'active');
+
+    // Start fresh
+    boxmail.classList.add('active');
+}
+
+if (btnElement) {
+    btnElement.addEventListener("click", handleButtonClick, false);
+    btnElement.addEventListener("touchend", handleButtonClick, false);
+}
+
+closeBtn.addEventListener('click', function () {
+    boxmail.classList.remove('active', 'opened', 'tilt');
+    document.querySelectorAll('.boxMail-container').forEach(container => {
+        container.classList.remove('opened', 'tilt');
     });
+    messageText.textContent = "";
+    currentIndexLetter = 0;
+    messagePanel.classList.remove('shown');
+});
 
-    $(".close").on("click", function () {
-        clearInterval(intervalContent)
-        document.querySelector(".title__letter").textContent = "";
-        text__letter.textContent = "";
-        currentIndexLetter = 0
-        currentIndexTitle = 0
-        document.querySelector("#heart__letter").classList.remove("animationOp");
-        document.querySelector(".love__img").classList.remove("animationOp");
-        document.querySelector("#mewmew").classList.remove("animationOp");
-        document.querySelectorAll(".heart").forEach((item) => {
-            item.classList.remove("animation")
-        })
-        $(".box__letter").slideUp();
-        $(".letter__border").slideUp();
-        boxmail.classList.remove('active');
-        boxmail.classList.remove('opened');
-    })
 
-    if (close) {
-        close.addEventListener('click', function () {
-            boxmail.classList.remove('active');
-            boxmail.classList.remove('opened');
-        });
-    }
+document.querySelectorAll('.boxMail-container .card1').forEach(card1 => {
+    card1.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
 
-    // Touch device improvements
-    document.addEventListener('touchstart', function() {}, { passive: true });
-    
-    // Improve scrolling on card content
-    if (document.querySelector('.card2-content')) {
-        document.querySelector('.card2-content').addEventListener('touchmove', function(e) {
-            e.stopPropagation();
-        }, false);
-    }
+        const container = card1.parentElement;
+
+        if (!container.classList.contains('tilt')) {
+            container.classList.add('tilt');
+            setTimeout(() => {
+                container.classList.add('opened');
+            }, 800); // wait for tilt animation
+        } else {
+            container.classList.remove('opened', 'tilt');
+        }
+    });
+});
 
 </script>
 
